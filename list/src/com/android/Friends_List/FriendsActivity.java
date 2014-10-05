@@ -27,33 +27,35 @@ public class FriendsActivity extends Activity {
         setContentView(R.layout.main);
 
         friendsList = (ListView) findViewById(R.id.friendsList);
-        /*values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2" };*/
         lst = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_multiple_choice, lst);
         friendsList.setAdapter(adapter);
     }
+
     public void onPlusBtnClick(View view) {
         DialogFragment dialog = new NewFriendDialogFragment();
         dialog.show(getFragmentManager(), "dialog");
     }
 
     public void onOkAddFriendClick(String name) {
-        adapter.insert(name, adapter.getCount());
-        friendsList.invalidateViews();
+        if(name.length() > 1){
+            adapter.insert(name, adapter.getCount());
+            friendsList.invalidateViews();
+        }
     }
 
     public void onDelFriendClick(View v) {
         SparseBooleanArray sbArr = friendsList.getCheckedItemPositions();
+        int j=0;
         for (int i = 0; i < sbArr.size(); i++) {
             int key = sbArr.keyAt(i);
             if (sbArr.get(key)){
                 friendsList.setItemChecked(key, false);
-                lst.remove( key );
+                lst.remove( key - j ); 
                 adapter.notifyDataSetChanged();
                 friendsList.invalidateViews();
+                j++;
             }
         }
     }
