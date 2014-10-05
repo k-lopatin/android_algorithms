@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:weightSum="1" android:id="@+id/linear1">
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="464dp"
+            android:id="@+id/friendsList" android:choiceMode="multipleChoice"/>
+    <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" android:columnCount="4"
+            android:id="@+id/grid1">
+        <Button
+                android:layout_width="200dp"
+                android:text="@string/add_new_friend"
+                android:id="@+id/button"
+                android:background="@android:color/holo_green_dark"
+                android:onClick="onPlusBtnClick"
+                android:layout_gravity="fill"
+                android:layout_columnSpan="2" android:layout_marginRight="15dp" android:layout_marginLeft="10dp"/>
+        <Button
+                android:layout_width="150dp"
+                android:text="@string/delete_friend"
+                android:id="@+id/button2"
+                android:background="@android:color/holo_red_dark" android:onClick="onDelFriendClick"/>
+    </GridLayout>
+
+
+</LinearLayout>
+
