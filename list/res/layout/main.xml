@@ -4,27 +4,36 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:weightSum="1" android:id="@+id/linear1">
-    <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:text="@string/back"
-            android:id="@+id/backBtn"
+    <LinearLayout
+            android:layout_height="40dp"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:weightSum="1.0"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:background="@android:color/holo_orange_light" android:layout_above="@+id/friendsList"
-            android:onClick="onBackClick"/>
+            android:id="@+id/topLine">
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_weight="0.1"
+                android:text="@string/back"
+                android:id="@+id/backBtn"
+                android:layout_alignParentLeft="true"
+                android:background="@android:color/holo_orange_light" android:layout_above="@+id/friendsList"
+                android:onClick="onBackClick"/>
 
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=""
-            android:id="@+id/title"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/backBtn"
-            android:layout_marginLeft="15dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_weight="0.8"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/title"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/backBtn"
+                android:layout_marginLeft="15dp"/>
+    </LinearLayout>
 
 
     <ListView
@@ -32,7 +41,7 @@
             android:layout_height="match_parent"
             android:id="@+id/friendsList" android:choiceMode="multipleChoice"
             android:layout_above="@+id/bottomLine"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/topLine"
             android:layout_marginLeft="5dp"/>
 
     <LinearLayout

@@ -70,6 +70,7 @@ public class FriendsActivity extends Activity {
     public void onBackClick(View v) {
         friendsModel.goBack();
         friendsList.invalidateViews();
+        titleText.setText( friendsModel.getCurrentFriendName() );
     }
 
 

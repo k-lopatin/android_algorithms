@@ -15,6 +15,7 @@ public class FriendsModel {
     private ArrayList<FriendModel> list;
     private ArrayList<FriendModel> listCur;
     private int currentID;
+    private FriendModel currentFriend;
 
     public FriendsModel(Activity act, int res) {
         listCur = new ArrayList<FriendModel>();
@@ -44,26 +45,38 @@ public class FriendsModel {
             if(f.getParentID() == parent){
                 listCur.add(f);
             }
+            if(f.getId() == parent){
+                currentFriend = f;
+            }
         }
         adapter.notifyDataSetChanged();
         currentID = parent;
     }
     public void goBack() {
-        if(currentID == 0) return;
-        listCur.clear();
-        for(FriendModel f : list){
-            if(f.getId() == currentID){
-                currentID = f.getParentID();
-                break;
+        if(currentID != 0) {
+            listCur.clear();
+            currentID = currentFriend.getParentID();
+            for(FriendModel f : list){
+                if(f.getParentID() == currentID){
+                    listCur.add(f);
+                }
+                if(f.getId() == currentID){
+                    currentFriend = f;
+                }
             }
+            adapter.notifyDataSetChanged();
         }
-        for(FriendModel f : list){
-            if(f.getParentID() == currentID){
-                listCur.add(f);
-            }
-        }
-        adapter.notifyDataSetChanged();
     }
+
+    public String getCurrentFriendName(){
+        if(currentID != 0){
+            return currentFriend.getName();
+        } else {
+            return "";
+        }
+
+    }
+
 
     public int getCurrentID() {
         return currentID;
