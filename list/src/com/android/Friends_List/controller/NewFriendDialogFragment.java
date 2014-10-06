@@ -1,4 +1,4 @@
-package com.android.Friends_List;
+package com.android.Friends_List.controller;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,8 +7,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
+
+import com.android.Friends_List.R;
 
 /**
  * Created by Константин on 03.10.2014.
@@ -42,12 +43,4 @@ public class NewFriendDialogFragment extends DialogFragment {
         });
         return builder.create();
     }
-
-   /* @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.newfriend, container, false);
-        friendsList = (EditText) v.findViewById(R.id.friendName);
-        return v;
-    }*/
 }
