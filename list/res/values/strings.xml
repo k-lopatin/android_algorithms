@@ -6,4 +6,5 @@
     <string name="cancel">Отмена</string>
     <string name="add_new_friend">Добавить</string>
     <string name="delete_friend">Удалить</string>
+    <string name="back">&lt;</string>
 </resources>

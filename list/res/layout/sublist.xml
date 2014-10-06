@@ -4,26 +4,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:weightSum="1" android:id="@+id/linear1">
-    <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:text="@string/back"
-            android:id="@+id/backBtn"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:background="@android:color/holo_orange_light" android:layout_above="@+id/friendsList"
-            android:onClick="onBackClick"/>
-
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=""
             android:id="@+id/title"
             android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/backBtn"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="15dp"/>
 
 

@@ -5,15 +5,19 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import android.widget.TextView;
 import com.android.Friends_List.R;
 import com.android.Friends_List.model.FriendModel;
+import com.android.Friends_List.model.FriendsModel;
 
 public class FriendsActivity extends Activity {
 
     private ListView friendsList;
-    private FriendModel friendModel;
+    private FriendsModel friendsModel;
+    private TextView titleText;
 
     /**
      * Called when the activity is first created.
@@ -24,8 +28,19 @@ public class FriendsActivity extends Activity {
         setContentView(R.layout.main);
 
         friendsList = (ListView) findViewById(R.id.friendsList);
-        friendModel = new FriendModel(this);
-        friendsList.setAdapter(friendModel.getAdapter());
+        friendsModel = new FriendsModel(this, R.layout.friend);
+        friendsList.setAdapter(friendsModel.getAdapter());
+
+        titleText = (TextView) findViewById(R.id.title);
+
+        friendsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                FriendModel f = (FriendModel)friendsModel.getAdapter().getItem(position);
+                friendsModel.showChildren( f.getId() );
+                titleText.setText(f.getName());
+            }
+        });
     }
 
     public void onPlusBtnClick(View view) {
@@ -33,8 +48,8 @@ public class FriendsActivity extends Activity {
         dialog.show(getFragmentManager(), "dialog");
     }
 
-    public void onOkAddFriendClick(String name) {
-        friendModel.add(name);
+    public void onOkAddFriendClick(String name, String desc) {
+        friendsModel.add(name, desc);
         friendsList.invalidate();
     }
 
@@ -45,11 +60,25 @@ public class FriendsActivity extends Activity {
             int key = sbArr.keyAt(i);
             if (sbArr.get(key)) {
                 friendsList.setItemChecked(key, false);
-                friendModel.delete(key - j);
+                friendsModel.delete(key - j);
                 j++;
             }
         }
         friendsList.invalidateViews();
     }
+
+    public void onBackClick(View v) {
+        friendsModel.goBack();
+        friendsList.invalidateViews();
+    }
+
+
+    private void setTitle() {
+
+    }
+
+
+
+
 
 }

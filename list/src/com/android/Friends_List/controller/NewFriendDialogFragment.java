@@ -15,7 +15,8 @@ import com.android.Friends_List.R;
  * Created by Константин on 03.10.2014.
  */
 public class NewFriendDialogFragment extends DialogFragment {
-    private EditText friendsList;
+    private EditText newFriendName;
+    private EditText newFriendDesc;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,8 +33,10 @@ public class NewFriendDialogFragment extends DialogFragment {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                friendsList = (EditText) newFriendView.findViewById(R.id.friendName);
-                ((FriendsActivity) getActivity()).onOkAddFriendClick(friendsList.getText().toString());
+                newFriendName = (EditText) newFriendView.findViewById(R.id.friendName);
+                newFriendDesc = (EditText) newFriendView.findViewById(R.id.friendDescription);
+                ((FriendsActivity) getActivity()).onOkAddFriendClick( newFriendName.getText().toString(),
+                        newFriendDesc.getText().toString() );
             }
         });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
