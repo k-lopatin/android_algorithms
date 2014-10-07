@@ -10,11 +10,11 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/nameText"/>
+            android:id="@+id/nameText" android:layout_marginTop="15dp"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
-            android:id="@+id/descriptionText"/>
+            android:id="@+id/descriptionText" android:layout_marginBottom="10dp"/>
 </LinearLayout>
