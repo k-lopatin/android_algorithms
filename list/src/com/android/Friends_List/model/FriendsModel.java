@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import com.android.Friends_List.R;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by Администратор on 06.10.2014.
@@ -34,9 +35,27 @@ public class FriendsModel {
         }
     }
 
-    public void delete(int pos) {
-        list.remove( pos );
+    public void delete(int id) {
+        for(Iterator i = listCur.iterator(); i.hasNext(); ) {
+            if( ((FriendModel)i.next()).getId() == id ) {
+                i.remove();
+            }
+        }
+        deleteChildren(id);
         adapter.notifyDataSetChanged();
+    }
+
+    private void deleteChildren(int id) {
+        for(Iterator i = list.iterator(); i.hasNext(); ) {
+            FriendModel f = (FriendModel) i.next();
+            if(f.getId() == id){
+                i.remove();
+            }
+            if(f.getParentID() == id) {
+                i.remove();
+                deleteChildren(f.getId());
+            }
+        }
     }
 
     public void showChildren(int parent) {
